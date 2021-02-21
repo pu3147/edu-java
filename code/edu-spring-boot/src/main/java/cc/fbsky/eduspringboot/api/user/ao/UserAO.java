@@ -1,4 +1,4 @@
-package cc.fbsky.eduspringboot.user.vo;
+package cc.fbsky.eduspringboot.api.user.ao;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class UserVO implements Serializable {
+public class UserAO implements Serializable {
 
     private String name;
 
