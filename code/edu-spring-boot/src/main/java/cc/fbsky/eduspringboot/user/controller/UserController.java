@@ -1,6 +1,6 @@
 package cc.fbsky.eduspringboot.user.controller;
 
-import cc.fbsky.eduspringboot.common.BaseResult;
+import cc.fbsky.eduspringboot.common.vo.BaseResult;
 import cc.fbsky.eduspringboot.user.vo.UserVO;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;

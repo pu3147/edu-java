@@ -1,4 +1,4 @@
-package cc.fbsky.eduspringboot.common;
+package cc.fbsky.eduspringboot.common.vo;
 
 import lombok.Data;
 
