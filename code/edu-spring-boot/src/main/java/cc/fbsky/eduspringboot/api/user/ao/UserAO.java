@@ -8,11 +8,13 @@ import java.util.Date;
 @Data
 public class UserAO implements Serializable {
 
+    private String  id;
+
     private String name;
 
     private Integer age;
 
     private Date birthday;
 
-    private Date regestDay;
+    private Date registryDay;
 }
