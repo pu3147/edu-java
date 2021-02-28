@@ -5,11 +5,10 @@ import cc.fbsky.eduspringboot.base.BaseResult;
 import cc.fbsky.eduspringboot.api.user.ao.UserAO;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 public class UserController {
 
     @Autowired
@@ -17,8 +16,14 @@ public class UserController {
 
     @ApiOperation("新增用户")
     @PostMapping("/user/add")
-    public BaseResult addUser(@RequestBody UserAO useInfo){
+    @ResponseBody
+    public BaseResult addUser(UserAO useInfo){
         return  userManagerService.addUser(useInfo);
     }
 
+    @GetMapping("/user/add")
+    public String toAddUser(){
+        return  "user/add";
+    }
 }
+

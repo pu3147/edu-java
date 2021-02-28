@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.fbsky.eduspringboot.service.user.dao.mapper.UserMapper">
+
+    <insert id="addUser">
+        INSERT INTO t_mem_user (
+            name
+            sel_des,
+            age
+        )
+        VALUES
+            (
+            #{name},
+            #{selDes},
+            #{age}
+            )
+    </insert>
+
+</mapper>

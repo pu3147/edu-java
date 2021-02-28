@@ -11,6 +11,12 @@ spring:
     password: 111111
     url: jdbc:mysql://127.0.0.1:3306/db_demo?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.jdbc.Driver
+  #thymeleaf
+  thymeleaf:
+    cache: false
+
+mybatis:
+  mapper-locations: classpath*:/**/*Mapper.xml
 
 logging:
   level:

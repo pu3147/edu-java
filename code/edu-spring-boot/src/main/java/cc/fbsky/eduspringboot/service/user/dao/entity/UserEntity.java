@@ -1,16 +1,16 @@
-package cc.fbsky.eduspringboot.api.user.ao;
+package cc.fbsky.eduspringboot.service.user.dao.entity;
 
 import lombok.Data;
 
-import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class UserAO implements Serializable {
-
+public class UserEntity {
     private Integer  id;
 
     private String name;
+
+    private String selDes;
 
     private Integer age;
 
