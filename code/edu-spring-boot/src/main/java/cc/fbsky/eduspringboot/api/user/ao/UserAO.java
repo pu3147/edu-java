@@ -12,9 +12,10 @@ public class UserAO implements Serializable {
 
     private String name;
 
+    private String selfDesc;
+
     private Integer age;
 
     private Date birthday;
 
-    private Date registryDay;
 }

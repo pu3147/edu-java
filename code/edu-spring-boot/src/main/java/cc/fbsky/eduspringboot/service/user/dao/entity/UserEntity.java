@@ -6,15 +6,14 @@ import java.util.Date;
 
 @Data
 public class UserEntity {
+
     private Integer  id;
 
     private String name;
 
-    private String selDes;
+    private String selfDesc;
 
     private Integer age;
 
     private Date birthday;
-
-    private Date registryDay;
 }

@@ -16,7 +16,7 @@ spring:
     cache: false
 
 mybatis:
-  mapper-locations: classpath*:/**/*Mapper.xml
+  mapperLocations: classpath*:/**/*Mapper.xml
 
 logging:
   level:

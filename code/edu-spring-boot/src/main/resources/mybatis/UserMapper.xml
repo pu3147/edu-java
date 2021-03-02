@@ -6,16 +6,17 @@
 
     <insert id="addUser">
         INSERT INTO t_mem_user (
-            name
-            sel_des,
-            age
+            name,
+            age,
+            self_desc,
+            birth_day
         )
         VALUES
             (
-            #{name},
-            #{selDes},
-            #{age}
+                #{name},
+                #{age},
+                #{selfDesc},
+                #{birthday}
             )
     </insert>
-
 </mapper>
