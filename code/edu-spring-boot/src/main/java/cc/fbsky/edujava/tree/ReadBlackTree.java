@@ -31,6 +31,7 @@ public class ReadBlackTree {
         tree.add("13","13");
         tree.add("14","14");
         tree.add("15","15");
+        tree.add("21","21");
 
     }
 
@@ -113,7 +114,7 @@ public class ReadBlackTree {
             return;
         }
 
-        ////父节点
+        //父节点
         TreeNode parent = childNode.parentNode;
         //父节点黑色-不用平衡
         if(TreeNode.BLACK == (parent.color)){
@@ -244,9 +245,6 @@ public class ReadBlackTree {
          * 祖父节点 黑色
          *
          * 此时以 父节点 左旋
-         *
-         * 祖父节点 红色
-         * 父节点  红色
          */
 
         if(TreeNode.RIGHT == childNode.posititon
@@ -255,7 +253,7 @@ public class ReadBlackTree {
             parent.parentNode.leftNode = childNode;
 
             //左旋
-            childNode.parentNode = parent.parentNode;
+            childNode.parentNode = grandParent;
             parent.parentNode = childNode;
 
             childNode.leftNode = parent;
@@ -276,23 +274,26 @@ public class ReadBlackTree {
          *
          * 祖父节点 黑色
          *
-         * 此时以 父节点 左旋
+         * 此时以 父节点 右旋
          *
-         * 祖父节点 红色
-         * 父节点  红色
+         * 再以
          */
 
-        if(TreeNode.LEFT == (childNode.posititon)
-                && TreeNode.RIGHT == (parent.posititon)){
+        if(TreeNode.LEFT == childNode.posititon
+                && TreeNode.RIGHT == parent.posititon){
 
-            parent.parentNode.leftNode = childNode;
+            grandParent.rightNode = childNode;
 
             //右旋
-            childNode.parentNode = parent.parentNode;
+            childNode.parentNode = grandParent;
             parent.parentNode = childNode;
+
+            childNode.rightNode = parent;
+            parent.leftNode = null;
 
             //同侧
             addToBalanceTree(parent);
+            return;
         }
 
     }
@@ -354,22 +355,28 @@ public class ReadBlackTree {
         static final String LEFT = "left";
         static final String RIGHT = "right";
 
+        @JSONField(ordinal = 1)
         String key;
+
+        @JSONField(ordinal = 2)
         Object value;
+
+        @JSONField(ordinal = 3)
+        String color = RED;
+
+        @JSONField(ordinal = 4)
+        String posititon = null;
+
+        @JSONField(ordinal = 5)
+        TreeNode leftNode = null;
+
+        @JSONField(ordinal = 6)
+        TreeNode rightNode = null;
 
         @JSONField(serialize = false)
         TreeNode parentNode = null;
 
-        TreeNode leftNode = null;
-        TreeNode rightNode = null;
-
-        String color = RED;
-
-        String posititon = null;
-
-        public TreeNode() {
-
-        }
+        public TreeNode() {}
 
         public TreeNode(String nodekey,Object nodeValue){
             this.key = nodekey;
