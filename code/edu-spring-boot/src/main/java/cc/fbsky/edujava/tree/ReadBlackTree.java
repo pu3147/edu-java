@@ -13,12 +13,6 @@ public class ReadBlackTree {
 
         TreeMap<Object,Object> objTree = new TreeMap<Object,Object>();
 
-        objTree.put(new TreeNode("12313","sdfds"),new String[1]);
-        objTree.put(new TreeNode("ads","sdfds"),new String[1]);
-        objTree.put(new TreeNode("sdfasdf","sdfds"),new String[1]);
-        objTree.put(new TreeNode("asfa","sdfds"),new String[1]);
-        objTree.put(new TreeNode("12313","sdfds"),new String[1]);
-
         objTree.put(12313,new String[1]);
 
 
@@ -26,13 +20,23 @@ public class ReadBlackTree {
 
     public static void addValue(ReadBlackTree tree) {
         // demoTreeMap();
-        tree.add("11","11");
-        tree.add("12","12");
-        tree.add("13","13");
-        tree.add("14","14");
-        tree.add("15","15");
-        tree.add("21","21");
+        tree.add(111, "");
+        tree.add(11, "");
+        tree.add(121, "");
+        tree.add(21, "");
+        tree.add(117, "");
+        tree.add(17, "");
 
+        tree.add(141, "");
+        tree.add(41, "");
+        tree.add(140, "");
+        tree.add(40, "");
+        tree.add(112, "");
+        tree.add(12, "");
+        tree.add(113, "");
+        tree.add(13, "");
+        tree.add(122, "");
+        tree.add(22, "");
     }
 
     public static void main(String[] args) {
@@ -41,15 +45,12 @@ public class ReadBlackTree {
         addValue(tree);
 
         System.out.println(JSON.toJSON(tree));
-        System.out.println(tree.find("sdf"));
-        System.out.println(tree.find("1123"));
-
     }
 
     //根
     private TreeNode root;
 
-    public void add(String key,Object value){
+    public void add(int key,Object value){
 
         TreeNode tmpNode = new TreeNode(key,value);
         tmpNode.color = TreeNode.RED;
@@ -65,7 +66,10 @@ public class ReadBlackTree {
         addNode(root,tmpNode);
 
         //平衡树
+        System.out.println("key==="+key+",treeToBalance="+JSON.toJSONString(root));
         addToBalanceTree(tmpNode);
+        System.out.println("result="+JSON.toJSONString(root));
+
     }
 
 
@@ -73,7 +77,7 @@ public class ReadBlackTree {
     private void addNode(TreeNode tmpRoot,TreeNode addNode){
 
         while (null != tmpRoot) {
-            String addKey = addNode.getKey();
+            Integer addKey = addNode.getKey();
 
             int compValue = tmpRoot.key.compareTo(addKey);
 
@@ -204,7 +208,6 @@ public class ReadBlackTree {
          * 祖父节点 红色
          * 父节点  红色
          */
-
         if(TreeNode.RIGHT == childNode.posititon
                 && TreeNode.RIGHT == parent.posititon){
 
@@ -298,21 +301,21 @@ public class ReadBlackTree {
 
     }
 
-    private void leftWhirling(TreeNode changeNode){
+    private void rightSpin (TreeNode node){
 
-        TreeNode parent = changeNode.parentNode;
-        TreeNode right = changeNode.rightNode;
+        TreeNode parent = node.parentNode;
+        TreeNode right = node.rightNode;
 
         if(null != parent){
             parent.rightNode = right;
         }
 
         right.parentNode = parent;
-        changeNode.parentNode = right;
+        //changeNode.parentNode = right;
 
     }
 
-    public Object find(String key){
+    public Object find(Integer key){
 
         if(null == root){
             return null;
@@ -356,7 +359,7 @@ public class ReadBlackTree {
         static final String RIGHT = "right";
 
         @JSONField(ordinal = 1)
-        String key;
+        Integer key;
 
         @JSONField(ordinal = 2)
         Object value;
@@ -378,7 +381,7 @@ public class ReadBlackTree {
 
         public TreeNode() {}
 
-        public TreeNode(String nodekey,Object nodeValue){
+        public TreeNode(Integer nodekey,Object nodeValue){
             this.key = nodekey;
             this.value = nodeValue;
         }
